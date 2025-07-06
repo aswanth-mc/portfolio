@@ -1,0 +1,36 @@
+*{
+    margin: 0%;
+}
+
+.head{
+    background-color: black;
+    display: flex;
+    align-items: flex-end;
+    height: 50px;
+    padding-bottom: 10px;
+    justify-content: flex-end;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.home{
+    height: 100vh;
+    width: 100vw;
+    background-color: beige;
+}
+.warm{
+    margin-left: 80px;
+    padding-top: 15vh;
+}

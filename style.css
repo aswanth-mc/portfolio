@@ -59,5 +59,43 @@
 .img img {
     max-width: 50%;
     height: auto;
-    padding-top: 30px;
+    padding-top: 100px;
+}
+
+.about{
+    width: 100vw;
+    height: 100vh;
+    background-color: aquamarine;
+}
+.about h1{
+    text-align: center;
+    padding-top: 60px;
+}
+.myabout{
+    padding-top: 250px;
+    margin-left: 40px;
+}
+.resume{
+    padding-top: 90px;
+    margin-left: 250px;
+   
+}
+.resume button {
+     background-color: brown;
+    color: aquamarine;
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    font-size: 24px;
+    border-radius: 12px;
+}
+.resume button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.resume button:active {
+  background-color: #7a2903;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

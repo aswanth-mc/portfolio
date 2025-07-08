@@ -33,34 +33,44 @@
     color: blue;
 }
 
-.home{
+.home {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     background: linear-gradient(#79bee8,#cce2ef,#cbd9dc,#cbcdcc);
-}
-.main{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: center;
 }
-.warm{
-    flex: 1;
-    min-width: 300px;
-    margin-left: 30px;
-    
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
 }
-.img{
-    flex: 1;
-    text-align: center;
-    min-width: 300px;
-    padding-top: 40px;
+
+.warm {
+  flex: 1;
+  padding: 20px;
 }
+
+.img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
 .img img {
-    max-width: 50%;
-    height: min-content;
-    padding-top: 100px;
+  max-width: 80%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  object-fit: contain;
 }
+
 
 .about{
     width: 100vw;
@@ -103,5 +113,9 @@
   background-color: #7a2903;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+.skills{
+    background-color: #666;
 }
 

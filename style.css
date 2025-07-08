@@ -36,7 +36,7 @@
 .home{
     height: 100vh;
     width: 100vw;
-    background-color: beige;
+    background-color: #dff1f3;
 }
 .main{
     display: flex;
@@ -58,14 +58,14 @@
 }
 .img img {
     max-width: 50%;
-    height: auto;
+    height: min-content;
     padding-top: 100px;
 }
 
 .about{
     width: 100vw;
     height: 100vh;
-    background-color: aquamarine;
+    background-color: #cac4b8;
 }
 .about h1{
     text-align: center;
@@ -73,11 +73,16 @@
 }
 .myabout{
     padding-top: 250px;
-    margin-left: 40px;
+    margin-left: 50%;
+    
+}
+.myabout h2{
+    font-size: larger;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .resume{
     padding-top: 90px;
-    margin-left: 250px;
+    margin-left: 70%;
    
 }
 .resume button {
@@ -99,3 +104,4 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+

@@ -3,7 +3,7 @@
 }
 
 .head{
-    background-color: #6db3e7;
+    background-color: #131414;
     display: flex;
     align-items: flex-end;
     height: 50px;
@@ -72,56 +72,98 @@
 }
 
 
-.about{
-    width: 100vw;
-    height: 100vh;
-    background-color: #cac4b8;
-}
-.about h1{
-    text-align: center;
-    padding-top: 60px;
-}
-.myabout{
-    padding-top: 250px;
-    margin-left: 50%;
-    
-}
-.myabout h2{
-    font-size: larger;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.resume{
-    padding-top: 90px;
-    margin-left: 70%;
-   
-}
-.resume button {
-     background-color: brown;
-    color: aquamarine;
-    border: none;
-    display: inline-block;
-    cursor: pointer;
-    width: 100px;
-    height: 50px;
-    font-size: 24px;
-    border-radius: 12px;
-}
-.resume button:hover{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-.resume button:active {
-  background-color: #7a2903;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+.about {
+  padding: 60px 20px;
+  background: linear-gradient(#e7d27f,#938e68,#2b2817);
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-.skills{
-    background-color: #666;
+.about h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+  flex-wrap: wrap; /* Stack on smaller screens */
+}
+.img2{
+    padding-top: 150px;
+}
+.img2 img {
+  width:400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+.myabout {
+  flex: 1;
+  min-width: 400px;
+  padding-top: 200px;
+  
+}
+
+.myabout h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.myabout h3 {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.myabout p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.resume button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.resume button a {
+  text-decoration: none;
+  color: white;
+}
+
+
+.skills {
+    padding: 60px 20px;
+    background: -moz-radial-gradient()(rgb(204, 177, 127),rgb(113, 113, 199),rgb(218, 218, 139));
+    text-align: center;
     width: 100vw;
     height: 100vh;
-    padding: 60px 20px;
-    text-align: center;
 }
+
+.skills h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #333;
+    text-transform: uppercase;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -129,6 +171,7 @@
     max-width: 1000px;
     margin: 0 auto;
 }
+
 .skill-card {
     background-color: white;
     padding: 20px;
@@ -156,3 +199,4 @@
     color: #555;
     font-size: 14px;
 }
+

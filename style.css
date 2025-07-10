@@ -204,4 +204,24 @@
 .education{
   height: 100vh;
   width: 100vw;
+  background-color: #cbcdcc;
+}
+.edu-card{
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  align-items: center;
+  color: rgb(0, 0, 0);
+  background-color: white;
+}
+.edu-image{
+  float: left;
+}
+.edu-image img{
+  width: 100px;
+  height: auto;
+}
+.edu-deatils{
+  float: right;
+  margin-left: 30px;
 }

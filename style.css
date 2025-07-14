@@ -80,12 +80,6 @@
   height: 100vh;
 }
 
-.about h1 {
-  font-size: 32px;
-  margin-bottom: 30px;
-  text-transform: uppercase;
-  color: #333;
-}
 
 .about-content {
   display: flex;
@@ -111,7 +105,7 @@
 .myabout {
   flex: 1;
   min-width: 400px;
-  padding-top: 200px;
+  padding-top: 100px;
   
 }
 
@@ -201,37 +195,16 @@
     font-size: 14px;
 }
 
-.education{
-  height: 100vh;
-  width: 100vw;
-  background-color: #b4ddc9;
-  padding: 60px 20px;
-  align-items: center;
-}
-.edu-card{
-  display: flex;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  align-items: center;
-  color: rgb(0, 0, 0);
-  background-color: white;
-  padding: 10px 0 10px 10px;
-  max-width: 700px;
-  text-align: left;
-  margin: 50px auto;
-}
 
-.edu-image{
-  float: left;
+.contact{
+  width: 100vw;
+  height: 50vh;
+  padding: 60px 20px;
 }
-.edu-image img{
-  width: 100px;
-  height: auto;
+.connect{
+  display: flex;
+  
 }
-.edu-deatils{
-  float: right;
-  margin-left: 30px;
-}
-.education h1{
-  text-align: center;
+.feedback{
+  margin-left: 50%;
 }

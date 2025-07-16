@@ -35,7 +35,10 @@ html{
   text-decoration-color: rgb(180,180,180);
 }
 .logo{
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+.logo:hover{
+  cursor: default;
 }
 
 

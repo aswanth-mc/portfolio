@@ -56,14 +56,28 @@ section{
   gap: 5rem;
   height: 80vh;
 }
+.profile-container{
+  display: flex;
+}
 .profile-photo{
   display: flex;
   height: 400px;
   width: 400px;
   margin: auto 0;
 }
+.text{
+  align-self: center;
+  align-items: center;
+  margin-left: 100px;
+}
+.text p{
+  font-weight: 600;
+}
+.text h1{
+  font-size: 4rem;
+}
 
-.about {
+/*.about {
   padding: 60px 20px;
   background: linear-gradient(#e7d27f,#938e68,#2b2817);
   text-align: center;
@@ -82,7 +96,7 @@ section{
   text-align: left;
   flex-wrap: wrap; /* Stack on smaller screens */
 }
-.img2{
+/*.img2{
     padding-top: 150px;
 }
 .img2 img {

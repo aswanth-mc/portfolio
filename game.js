@@ -1,13 +1,13 @@
 const config = {
   type: Phaser.AUTO,
   width: 800,
-  height: 450,
+  height: 600,
   parent: 'game-container',
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 600 },
-      debug: false
+      gravity: { y: 500 },
+      debug: false // Set to true only if you want to inspect hitboxes
     }
   },
   scene: {
@@ -21,7 +21,7 @@ const game = new Phaser.Game(config);
 
 let player;
 let cursors;
-let ground;
+let platforms;
 let signpost;
 let contactBox;
 let aboutBox;
@@ -30,7 +30,15 @@ let keyE;
 let isModalOpen = false;
 
 function preload() {
-  // Load the official Phaser dude spritesheet directly from the web
+  // 1. Load Background Sky
+  this.load.image('sky', 'https://labs.phaser.io/assets/skies/space3.png');
+  // Alternatively for a light blue sky:
+  // this.load.image('sky', 'https://labs.phaser.io/assets/skies/sky4.png');
+
+  // 2. Load Ground / Platform bar
+  this.load.image('ground', 'https://labs.phaser.io/assets/sprites/platform.png');
+
+  // 3. Load Character
   this.load.spritesheet('dude', 'https://labs.phaser.io/assets/sprites/dude.png', {
     frameWidth: 32,
     frameHeight: 48
@@ -38,33 +46,45 @@ function preload() {
 }
 
 function create() {
-  // 1. Ground platform
-  ground = this.add.rectangle(400, 430, 800, 40, 0x3d7343);
-  this.physics.add.existing(ground, true);
+  // 1. Background Sky (Centered at 400, 300)
+  this.add.image(400, 300, 'sky');
 
-  // 2. About Station (Left Side)
-  aboutBox = this.add.rectangle(250, 395, 25, 30, 0x9b59b6); // Purple marker
+  // 2. Static Platforms Group
+  platforms = this.physics.add.staticGroup();
+
+  // Bottom main floor (scaled x2 to span the 800px width)
+  platforms.create(400, 584, 'ground').setScale(2).refreshBody();
+
+  // Floating ledges
+  platforms.create(600, 450, 'ground');
+  platforms.create(100, 320, 'ground');
+  platforms.create(700, 220, 'ground');
+
+  // 3. Interactive Stations
+  // About (on the bottom ground)
+  aboutBox = this.add.rectangle(180, 285, 25, 30, 0x9b59b6);
   this.physics.add.existing(aboutBox, true);
-  this.add.text(230, 350, "About", { fontSize: '14px', fill: '#ffffff' });
+  this.add.text(160, 245, "About", { fontSize: '14px', fill: '#ffffff' });
 
-  // 3. Projects Signpost (Center-Right)
-  signpost = this.add.rectangle(550, 390, 30, 40, 0x8b5a2b); // Brown wooden sign
+  // Projects (on the middle floating ledge at y: 420)
+  signpost = this.add.rectangle(600, 415, 30, 40, 0x8b5a2b);
   this.physics.add.existing(signpost, true);
-  this.add.text(515, 340, "Projects", { fontSize: '14px', fill: '#ffffff' });
+  this.add.text(565, 375, "Projects", { fontSize: '14px', fill: '#ffffff' });
 
-  // 4. Contact Station (Far Right)
-  contactBox = this.add.rectangle(730, 395, 25, 30, 0xb84343); // Red mailbox
+  // Contact (on the high floating ledge at y: 220)
+  contactBox = this.add.rectangle(700, 185, 25, 30, 0xb84343);
   this.physics.add.existing(contactBox, true);
-  this.add.text(700, 350, "Contact", { fontSize: '14px', fill: '#ffffff' });
+  this.add.text(670, 145, "Contact", { fontSize: '14px', fill: '#ffffff' });
 
-  // 5. Player
-  // --- Replace the blue rectangle with this ---
-  player = this.physics.add.sprite(100, 350, 'dude');
+  // 4. Player Setup
+  player = this.physics.add.sprite(80, 500, 'dude');
   player.setBounce(0.1);
   player.setCollideWorldBounds(true);
-  this.physics.add.collider(player, ground);
 
-  // Animations for the dude
+  // Collision with all platforms
+  this.physics.add.collider(player, platforms);
+
+  // 5. Animations
   this.anims.create({
     key: 'left',
     frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
@@ -74,7 +94,7 @@ function create() {
 
   this.anims.create({
     key: 'turn',
-    frames: [ { key: 'dude', frame: 4 } ],
+    frames: [{ key: 'dude', frame: 4 }],
     frameRate: 20
   });
 
@@ -85,19 +105,18 @@ function create() {
     repeat: -1
   });
 
-  // 6. Instruction text
-  messageText = this.add.text(20, 20, "Explore using Arrow Keys!", {
+  // 6. UI Text
+  messageText = this.add.text(20, 20, "Jump across platforms using Arrow Keys / Space!", {
     fontSize: '14px',
     fill: '#ffffff',
-    backgroundColor: '#00000088',
+    backgroundColor: '#000000aa',
     padding: { x: 8, y: 4 }
   });
 
-  // 7. Controls setup
+  // 7. Inputs & Modals
   cursors = this.input.keyboard.createCursorKeys();
   keyE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
 
-  // 8. Close Button Click Event
   const closeBtn = document.getElementById('close-btn');
   if (closeBtn) {
     closeBtn.addEventListener('click', (e) => {
@@ -106,21 +125,15 @@ function create() {
     });
   }
 
-  // 9. Click outside the modal overlay to close
   const modal = document.getElementById('portfolio-modal');
   if (modal) {
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
+      if (e.target === modal) closeModal();
     });
   }
 
-  // 10. Press Escape key to close
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' || e.key === 'Esc') {
-      closeModal();
-    }
+    if (e.key === 'Escape' || e.key === 'Esc') closeModal();
   });
 }
 
@@ -131,22 +144,22 @@ function update() {
     return;
   }
 
+  // Horizontal Movement
   if (cursors.left.isDown) {
-    player.setVelocityX(-160);
+    player.setVelocityX(-180);
     player.anims.play('left', true);
   } else if (cursors.right.isDown) {
-    player.setVelocityX(160);
+    player.setVelocityX(180);
     player.anims.play('right', true);
   } else {
     player.setVelocityX(0);
     player.anims.play('turn');
   }
 
+  // Jump logic (can jump when touching ground/ledge)
   if ((cursors.up.isDown || cursors.space.isDown) && player.body.touching.down) {
-    player.setVelocityY(-350);
+    player.setVelocityY(-400);
   }
-
-
 
   // Distance checks
   const distToAbout = Phaser.Math.Distance.Between(player.x, player.y, aboutBox.x, aboutBox.y);
@@ -169,7 +182,7 @@ function update() {
       openModal('contact');
     }
   } else {
-    messageText.setText("Explore the world using Arrow Keys!");
+    messageText.setText("Jump across platforms using Arrow Keys / Space!");
   }
 }
 
@@ -182,29 +195,18 @@ function openModal(type) {
 
   if (!modal || !aboutView || !projectsView || !contactView) return;
 
-  // Hide all sections first
   aboutView.style.display = 'none';
-  aboutView.classList.add('hidden');
-
   projectsView.style.display = 'none';
-  projectsView.classList.add('hidden');
-
   contactView.style.display = 'none';
-  contactView.classList.add('hidden');
 
-  // Display only the requested section
   if (type === 'about') {
-    aboutView.classList.remove('hidden');
     aboutView.style.display = 'block';
   } else if (type === 'projects') {
-    projectsView.classList.remove('hidden');
     projectsView.style.display = 'block';
   } else if (type === 'contact') {
-    contactView.classList.remove('hidden');
     contactView.style.display = 'block';
   }
 
-  // Display the modal overlay
   modal.classList.remove('hidden');
   modal.style.display = 'flex';
 }

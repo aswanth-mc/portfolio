@@ -29,7 +29,13 @@ let messageText;
 let keyE;
 let isModalOpen = false;
 
-function preload() {}
+function preload() {
+  // Load the official Phaser dude spritesheet directly from the web
+  this.load.spritesheet('dude', 'https://labs.phaser.io/assets/sprites/dude.png', {
+    frameWidth: 32,
+    frameHeight: 48
+  });
+}
 
 function create() {
   // 1. Ground platform
@@ -52,10 +58,32 @@ function create() {
   this.add.text(700, 350, "Contact", { fontSize: '14px', fill: '#ffffff' });
 
   // 5. Player
-  player = this.add.rectangle(100, 350, 28, 40, 0x3498db);
-  this.physics.add.existing(player);
-  player.body.setCollideWorldBounds(true);
+  // --- Replace the blue rectangle with this ---
+  player = this.physics.add.sprite(100, 350, 'dude');
+  player.setBounce(0.1);
+  player.setCollideWorldBounds(true);
   this.physics.add.collider(player, ground);
+
+  // Animations for the dude
+  this.anims.create({
+    key: 'left',
+    frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+    frameRate: 10,
+    repeat: -1
+  });
+
+  this.anims.create({
+    key: 'turn',
+    frames: [ { key: 'dude', frame: 4 } ],
+    frameRate: 20
+  });
+
+  this.anims.create({
+    key: 'right',
+    frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+    frameRate: 10,
+    repeat: -1
+  });
 
   // 6. Instruction text
   messageText = this.add.text(20, 20, "Explore using Arrow Keys!", {
@@ -98,23 +126,27 @@ function create() {
 
 function update() {
   if (isModalOpen) {
-    player.body.setVelocityX(0); // Freeze movement when viewing modal
+    player.setVelocityX(0);
+    player.anims.play('turn');
     return;
   }
 
-  // Left & Right movement
   if (cursors.left.isDown) {
-    player.body.setVelocityX(-160);
+    player.setVelocityX(-160);
+    player.anims.play('left', true);
   } else if (cursors.right.isDown) {
-    player.body.setVelocityX(160);
+    player.setVelocityX(160);
+    player.anims.play('right', true);
   } else {
-    player.body.setVelocityX(0);
+    player.setVelocityX(0);
+    player.anims.play('turn');
   }
 
-  // Jump logic
   if ((cursors.up.isDown || cursors.space.isDown) && player.body.touching.down) {
-    player.body.setVelocityY(-350);
+    player.setVelocityY(-350);
   }
+
+
 
   // Distance checks
   const distToAbout = Phaser.Math.Distance.Between(player.x, player.y, aboutBox.x, aboutBox.y);

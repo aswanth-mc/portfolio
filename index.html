@@ -3,36 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My 2D Portfolio</title>
+  <title>2D Game Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Load Phaser 3 via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.min.js"></script>
 </head>
 <body>
   <div id="game-container"></div>
-  <div id="game-container"></div>
 
-<!-- Portfolio Modal Overlay -->
-<div id="portfolio-modal" class="modal hidden">
-  <div class="modal-content">
-    <span id="close-btn" class="close-btn">&times;</span>
-    <h2 id="modal-title">Featured Projects</h2>
-    <div class="project-cards">
-      <div class="card">
-        <h3>Project Quest 1</h3>
-        <p>A brief summary of what you built, tech stack used, and key impact.</p>
-        <div class="tags"><span>Python</span><span>Django</span></div>
-        <a href="https://github.com" target="_blank" class="pixel-btn">GitHub</a>
+  <!-- Portfolio Modal -->
+  <div id="portfolio-modal" class="modal hidden">
+    <div class="modal-content">
+      <span id="close-btn" class="close-btn">&times;</span>
+      
+      <!-- Projects Section -->
+      <div id="projects-view">
+        <h2>Featured Projects</h2>
+        <div class="project-cards">
+          <div class="card">
+            <h3>Project Quest 1</h3>
+            <p>Full-stack web application with dynamic data management.</p>
+            <div class="tags"><span>Python</span><span>Django</span></div>
+            <a href="https://github.com" target="_blank" class="pixel-btn">GitHub</a>
+          </div>
+          <div class="card">
+            <h3>Project Quest 2</h3>
+            <p>Spatial analytics and visualization dashboard.</p>
+            <div class="tags"><span>Pandas</span><span>PostgreSQL</span></div>
+            <a href="https://github.com" target="_blank" class="pixel-btn">GitHub</a>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Project Quest 2</h3>
-        <p>Data analytics pipeline and interactive visualization dashboard.</p>
-        <div class="tags"><span>Pandas</span><span>PostgreSQL</span></div>
-        <a href="https://github.com" target="_blank" class="pixel-btn">GitHub</a>
+
+      <!-- Contact Section -->
+      <div id="contact-view" class="hidden">
+        <h2>Contact Guild</h2>
+        <p style="margin-top: 8px; color: #ccc;">Send a message or reach out through social channels:</p>
+        <div class="contact-links">
+          <a href="mailto:your-email@example.com" class="pixel-btn contact-btn">📧 Send Email</a>
+          <a href="https://linkedin.com" target="_blank" class="pixel-btn contact-btn">💼 LinkedIn</a>
+          <a href="https://github.com" target="_blank" class="pixel-btn contact-btn">🐙 GitHub</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
   <script src="game.js"></script>
 </body>
 </html>

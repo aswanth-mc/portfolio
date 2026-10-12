@@ -33,8 +33,8 @@ body {
   z-index: 100;
 }
 
-.modal.hidden {
-  display: none;
+.hidden {
+  display: none !important;
 }
 
 /* Retro Window Card */
@@ -116,4 +116,17 @@ body {
 
 .pixel-btn:hover {
   background-color: #f7e096;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.contact-btn {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
 }

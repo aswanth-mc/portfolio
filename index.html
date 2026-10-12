@@ -10,42 +10,77 @@
 <body>
   <div id="game-container"></div>
 
-  <!-- Portfolio Modal -->
-  <div id="portfolio-modal" class="modal hidden">
-    <div class="modal-content">
-      <span id="close-btn" class="close-btn">&times;</span>
-      
-      <!-- Projects Section -->
-      <div id="projects-view">
-        <h2>Featured Projects</h2>
-        <div class="project-cards">
-          <div class="card">
-            <h3>Project Quest 1</h3>
-            <p>Full-stack web application with dynamic data management.</p>
-            <div class="tags"><span>Python</span><span>Django</span></div>
-            <a href="https://github.com" target="_blank" class="pixel-btn">GitHub</a>
-          </div>
-          <div class="card">
-            <h3>Project Quest 2</h3>
-            <p>Spatial analytics and visualization dashboard.</p>
-            <div class="tags"><span>Pandas</span><span>PostgreSQL</span></div>
-            <a href="https://github.com" target="_blank" class="pixel-btn">GitHub</a>
-          </div>
-        </div>
-      </div>
+  <<!-- Single Portfolio Modal Overlay -->
+<div id="portfolio-modal" class="modal hidden">
+  <div class="modal-content">
+    <span id="close-btn" class="close-btn">&times;</span>
 
-      <!-- Contact Section -->
-      <div id="contact-view" class="hidden">
-        <h2>Contact Guild</h2>
-        <p style="margin-top: 8px; color: #ccc;">Send a message or reach out through social channels:</p>
-        <div class="contact-links">
-          <a href="mailto:your-email@example.com" class="pixel-btn contact-btn">📧 Send Email</a>
-          <a href="https://linkedin.com" target="_blank" class="pixel-btn contact-btn">💼 LinkedIn</a>
-          <a href="https://github.com" target="_blank" class="pixel-btn contact-btn">🐙 GitHub</a>
+    <!-- 1. About View -->
+    <div id="about-view" class="hidden">
+      <h2>About Me</h2>
+      <p style="margin-top: 10px; line-height: 1.6; color: #ccc;">
+        Hi, I'm a Computer Science postgraduate student at Digital University Kerala, specializing in Data Analytics. I'm interested in building useful software applications and exploring how data can help us understand and solve real-world problems.
+      </p>
+      <p style="margin-top: 10px; line-height: 1.6; color: #ccc;">
+        I work with Python and web technologies, including Django, HTML, CSS, and JavaScript, and I'm developing my skills in SQL, R, and data analytics. I enjoy learning how things work, experimenting with new technologies, and building projects that turn ideas into practical solutions.
+      </p>
+      <p style="margin-top: 10px; line-height: 1.6; color: #ccc;">
+        My goal is to combine software development and data analytics to create meaningful, data-driven applications while continuously improving my technical and problem-solving skills.
+      </p>
+
+      <h3 style="margin-top: 24px; margin-bottom: 8px; color: #e0c879;">Education</h3>
+      <ul style="list-style: none; padding-left: 0; color: #ccc; line-height: 1.6;">
+        <li style="margin-bottom: 8px;">
+          <strong style="color: #fff;">M.Sc. Computer Science (Data Analytics)</strong><br />
+          Digital University Kerala <span style="color: #888;">| 2026 – Present</span>
+        </li>
+        <li style="margin-bottom: 8px;">
+          <strong style="color: #fff;">Bachelor of Computer Applications (BCA)</strong><br />
+          University of Calicut <span style="color: #888;">| 2022 – 2025</span>
+        </li>
+      </ul>
+
+      <h3 style="margin-top: 20px; margin-bottom: 8px; color: #e0c879;">Certifications</h3>
+      <ul style="list-style: none; padding-left: 0; color: #ccc; line-height: 1.6;">
+        <li>
+          <strong style="color: #fff;">Python Programming Certification</strong><br />
+          Entri Elevate
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2. Projects View -->
+    <div id="projects-view" class="hidden">
+      <h2>Featured Projects</h2>
+      <div class="project-cards">
+        <div class="card">
+          <h3>Project Quest 1</h3>
+          <p>Full-stack web application with dynamic data management.</p>
+          <div class="tags"><span>Python</span><span>Django</span></div>
+          <a href="https://github.com" target="_blank" class="pixel-btn">GitHub</a>
+        </div>
+        <div class="card">
+          <h3>Project Quest 2</h3>
+          <p>Spatial analytics and visualization dashboard.</p>
+          <div class="tags"><span>Pandas</span><span>PostgreSQL</span></div>
+          <a href="https://github.com" target="_blank" class="pixel-btn">GitHub</a>
         </div>
       </div>
     </div>
+
+    <!-- 3. Contact View -->
+    <div id="contact-view" class="hidden">
+      <h2>Contact Guild</h2>
+      <p style="margin-top: 8px; color: #ccc;">Send a message or reach out through social channels:</p>
+      <div class="contact-links">
+        <a href="mailto:your-email@example.com" class="pixel-btn contact-btn">📧 Send Email</a>
+        <a href="https://linkedin.com" target="_blank" class="pixel-btn contact-btn">💼 LinkedIn</a>
+        <a href="https://github.com" target="_blank" class="pixel-btn contact-btn">🐙 GitHub</a>
+      </div>
+    </div>
+
   </div>
+</div>
 
   <script src="game.js"></script>
 </body>

@@ -31,9 +31,8 @@ let isModalOpen = false;
 
 function preload() {
   // 1. Load Background Sky
-  this.load.image('sky', 'https://labs.phaser.io/assets/skies/space3.png');
-  // Alternatively for a light blue sky:
-  // this.load.image('sky', 'https://labs.phaser.io/assets/skies/sky4.png');
+  this.load.image('world-bg', 'assets/background.png');
+
 
   // 2. Load Ground / Platform bar
   this.load.image('ground', 'https://labs.phaser.io/assets/sprites/platform.png');
@@ -47,7 +46,8 @@ function preload() {
 
 function create() {
   // 1. Background Sky (Centered at 400, 300)
-  this.add.image(400, 300, 'sky');
+  const bg = this.add.image(480, 270, 'world-bg');
+  bg.setDisplaySize(960, 540);
 
   // 2. Static Platforms Group
   platforms = this.physics.add.staticGroup();

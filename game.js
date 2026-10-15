@@ -35,8 +35,7 @@ function preload() {
 
 
   // 2. Load Ground / Platform bar
-  this.load.image('ground', 'https://labs.phaser.io/assets/sprites/platform.png');
-
+  
   // 3. Load Character
   this.load.spritesheet('dude', 'https://labs.phaser.io/assets/sprites/dude.png', {
     frameWidth: 32,
@@ -46,7 +45,7 @@ function preload() {
 
 function create() {
   // 1. Background Sky (Centered at 400, 300)
-  const bg = this.add.image(480, 270, 'world-bg');
+  const bg = this.add.image(480, 300, 'world-bg');
   bg.setDisplaySize(960, 540);
 
   // 2. Static Platforms Group

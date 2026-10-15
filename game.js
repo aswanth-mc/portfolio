@@ -195,20 +195,22 @@ function openModal(type) {
 
   if (!modal || !aboutView || !projectsView || !contactView) return;
 
-  aboutView.style.display = 'none';
-  projectsView.style.display = 'none';
-  contactView.style.display = 'none';
+  // 1. Hide all views first
+  aboutView.classList.add('hidden');
+  projectsView.classList.add('hidden');
+  contactView.classList.add('hidden');
 
+  // 2. Reveal only the requested view by removing 'hidden'
   if (type === 'about') {
-    aboutView.style.display = 'block';
+    aboutView.classList.remove('hidden');
   } else if (type === 'projects') {
-    projectsView.style.display = 'block';
+    projectsView.classList.remove('hidden');
   } else if (type === 'contact') {
-    contactView.style.display = 'block';
+    contactView.classList.remove('hidden');
   }
 
+  // 3. Reveal the modal wrapper
   modal.classList.remove('hidden');
-  modal.style.display = 'flex';
 }
 
 function closeModal() {
@@ -216,6 +218,6 @@ function closeModal() {
   const modal = document.getElementById('portfolio-modal');
   if (modal) {
     modal.classList.add('hidden');
-    modal.style.display = 'none';
   }
 }
+
